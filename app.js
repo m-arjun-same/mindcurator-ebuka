@@ -178,7 +178,7 @@ if (window.gsap && window.ScrollTrigger) {
       .from(cs.querySelector('.case-link'), { y: 18, autoAlpha: 0, duration: .6 }, '-=.5')
       .from(cs.querySelectorAll('.case-panel'), { clipPath: 'inset(0 0 100% 0)', duration: .9, ease: 'power3.inOut', stagger: .1 }, '-=.35');
   });
-  gsap.utils.toArray('.about-line,.promise-h,.stats li,.skills-h,.foot-cta').forEach(el => {
+  gsap.utils.toArray('.about-line,.promise-h,.stats li,.skills-h').forEach(el => {
     gsap.from(el, { y: 36, autoAlpha: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
   });
 }
@@ -186,3 +186,19 @@ if (window.gsap && window.ScrollTrigger) {
 /* keep case films playing whenever they are on screen */
 const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } }), { threshold: .15 });
 document.querySelectorAll('.case-banner video').forEach(v => { v.muted = true; vio.observe(v); });
+
+/* footer: copy-email pill + intro reveal */
+(() => {
+  const btn = document.getElementById('feCopy'), txt = document.getElementById('feText');
+  const email = 'themindcuratorstudio@gmail.com';
+  btn && btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(email); txt.textContent = 'Copied!'; }
+    catch { window.location.href = 'mailto:' + email; return; }
+    setTimeout(() => txt.textContent = email, 1600);
+  });
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.from('.footer-name,.footer-copy', { y: 30, autoAlpha: 0, duration: .9, ease: 'power3.out', stagger: .1, scrollTrigger: { trigger: '.foot', start: 'top 80%' } });
+    gsap.from('.footer-email', { autoAlpha: 0, duration: .8, scrollTrigger: { trigger: '.foot', start: 'top 80%' } });
+    gsap.from('.footer-icon', { scale: 0, duration: .7, ease: 'back.out(2)', stagger: .07, scrollTrigger: { trigger: '.foot', start: 'top 80%' } });
+  }
+})();
