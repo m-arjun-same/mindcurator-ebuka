@@ -32,10 +32,10 @@ ul{list-style:none}
 .brand-name{font-family:'DM Serif',serif;font-size:calc(var(--u)*24);letter-spacing:-.02em}
 .btn-chat{display:flex;align-items:center;gap:calc(var(--u)*12);height:calc(var(--u)*46);padding:0 calc(var(--u)*18);background:#fff;color:#000;font-size:calc(var(--u)*16);letter-spacing:-.04em}
 .btn-arrow{width:calc(var(--u)*11);height:calc(var(--u)*11)}
-.roll{display:block;overflow:hidden}
-.roll span{display:block;transition:transform .45s cubic-bezier(.76,0,.24,1)}
-a:hover .roll span{transform:translateY(-100%)}
-.roll span::after{content:attr(data-dup);display:block}
+.roll{display:block;overflow:hidden;height:1.2em}
+.roll>span{display:block;line-height:1.2;transition:transform .45s cubic-bezier(.76,0,.24,1)}
+a:hover .roll>span{transform:translateY(-1.2em)}
+.roll>span::after{content:attr(data-dup);display:block;line-height:1.2}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:#0d0d0d;color:#fff;overflow:hidden;min-height:100svh}
