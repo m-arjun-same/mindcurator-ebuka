@@ -59,22 +59,6 @@ document.getElementById('caseList').innerHTML = CASES.map(c => `
     <div class="case-panel case-banner">
       <video src="${c.video}" poster="${c.poster}" autoplay muted loop playsinline preload="auto" aria-label="${c.name} film"></video>
     </div>
-    <div class="case-side">
-      <div class="case-panel case-stat">
-        <img src="${c.stat.image}" alt="" loading="lazy">
-        <span class="stat-num">${c.stat.value}${c.stat.sup ? `<sup>${c.stat.sup}</sup>` : ''}</span>
-        <p class="stat-label">${c.stat.label}</p>
-      </div>
-      <figure class="case-panel case-quote">
-        <h4>${c.quote.title}</h4>
-        <blockquote>${c.quote.text}</blockquote>
-        <figcaption class="case-person">
-          <img src="${c.quote.avatar}" alt="" loading="lazy">
-          <span><span class="p-name">${c.quote.name}</span><br><span class="p-role">${c.quote.role}</span></span>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
 </article>`).join('');
 
 document.getElementById('skillArc').innerHTML = SKILLS.map(s => `
