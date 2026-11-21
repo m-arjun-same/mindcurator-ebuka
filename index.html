@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindCurator Studio — Websites People Remember</title>
+<meta name="description" content="MindCurator Studio curates your business into a website people remember. Selected work: Café Breizh, CityPaws Grooming, Maguva, Malgudi Coffee House, Mayuri Footwears.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="assets/dm-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/geist-medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/hero-dog.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-count">0%</div>
+  <div class="loader-skip">Click to skip</div>
+</div>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="MindCurator Studio home">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="6.5" fill="currentColor"/></svg>
+    <span class="brand-name">MindCurator</span>
+  </a>
+  <a class="btn-chat magnetic" href="mailto:themindcuratorstudio@gmail.com">
+    <span class="roll"><span>Let’s Chat</span></span>
+    <svg viewBox="0 0 12 12" class="btn-arrow" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.6"/></svg>
+  </a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="dither" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-word"><span class="line-mask"><span class="line-in">MINDCURATOR</span></span></h1>
+        <p class="hero-role"><span class="line-mask"><span class="line-in">Website Studio in <em>Hyderabad</em></span></span></p>
+        <p class="hero-para">We curate your business into a website people remember — designed, built and shipped by one studio, in our own code.</p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-word hero-word-r"><span class="line-mask"><span class="line-in grad">STUDIO</span></span></div>
+      </div>
+      <img class="hero-img" src="assets/hero-dog.webp" alt="Zellie, the cream doodle of CityPaws Grooming — a MindCurator project" fetchpriority="high">
+      <a class="hero-card" href="https://www.instagram.com/themindcurator_studio" target="_blank" rel="noreferrer" aria-label="MindCurator Studio on Instagram">
+        <img src="assets/chip1.jpg" alt="" loading="lazy">
+        <span class="hero-card-txt"><small>NEW PROJECT LIVE</small><strong>See the latest build</strong></span>
+        <svg viewBox="0 0 12 12" class="btn-arrow" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <p class="sec-label">About us</p>
+    <p class="about-line">With over <b>20 websites shipped</b> we have helped brands <img class="chip" src="assets/chip1.jpg" alt=""> grow by using design <img class="chip" src="assets/chip2.jpg" alt=""> to make first impressions <img class="chip" src="assets/chip3.jpg" alt=""> that turn visitors into <b>customers</b></p>
+  </section>
+
+  <!-- TRUSTED / CLIENT ARC -->
+  <section class="trusted">
+    <p class="sec-label center">Trusted by incredible companies</p>
+    <div class="arc" id="clientArc" aria-label="Clients">
+      <div class="arc-item"><div class="arc-card serif">Café Breizh</div></div>
+      <div class="arc-item"><div class="arc-card">CityPaws</div></div>
+      <div class="arc-item"><div class="arc-card serif">Maguva</div></div>
+      <div class="arc-item"><div class="arc-card">Malgudi</div></div>
+      <div class="arc-item"><div class="arc-card serif">Mayuri</div></div>
+      <div class="arc-item"><div class="arc-card">Paradise</div></div>
+      <div class="arc-item"><div class="arc-card serif">ShashiClicks</div></div>
+      <div class="arc-item"><div class="arc-card">Velmara</div></div>
+    </div>
+  </section>
+
+  <!-- PROMISE + STATS -->
+  <section class="promise">
+    <h2 class="promise-h">Making good brands great with design</h2>
+    <p class="promise-p">The difference between good and great is in the website. Let us make your brand great together</p>
+    <a class="btn-call magnetic" href="https://wa.me/919398359538" target="_blank" rel="noreferrer"><span class="roll"><span>Book a Call</span></span></a>
+    <ul class="stats">
+      <li><b>20+</b><span>Projects Shipped</span></li>
+      <li><b>5</b><span>Cities Served</span></li>
+      <li><b>2</b><span>Countries</span></li>
+      <li><b>100%</b><span>Own Code, No Templates</span></li>
+    </ul>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="cases">
+    <p class="sec-label">Selected case studies</p>
+    <div id="caseList"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills">
+    <div class="rings" aria-hidden="true"><i></i><i></i></div>
+    <p class="sec-label light center">Skills geared towards growth</p>
+    <h2 class="skills-h">Our core focus of services aims at growth</h2>
+    <div class="arc arc-dark" id="skillArc" aria-label="Services"></div>
+    <a class="btn-call light magnetic" href="mailto:themindcuratorstudio@gmail.com"><span class="roll"><span>Book a Call</span></span></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <a class="foot-cta" href="mailto:themindcuratorstudio@gmail.com">Let’s Chat
+      <svg viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.2"/></svg>
+    </a>
+    <div class="foot-word">MINDCURATOR</div>
+    <p class="foot-motto">We curate your business into a website people remember</p>
+    <nav class="foot-links">
+      <a href="https://www.instagram.com/themindcurator_studio" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://wa.me/919398359538" target="_blank" rel="noreferrer">WhatsApp</a>
+      <a href="mailto:themindcuratorstudio@gmail.com">Email</a>
+    </nav>
+    <p class="foot-small">© 2026 MindCurator Studio · Hyderabad</p>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
