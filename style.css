@@ -128,7 +128,7 @@ a:hover .roll span{transform:translateY(-100%)}
 .case-stat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--u)*16);color:#fff;background:#d9d9d9;min-height:calc(var(--u)*188)}
 @media(min-width:1280px){.case-stat{height:calc(var(--u)*225);min-height:0}}
 .case-stat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.case-stat::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.case-stat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.58))}
 .case-stat .stat-num{position:relative;z-index:1;font-family:'DM Serif',serif;font-size:calc(var(--u)*52);line-height:.75;letter-spacing:-.02em;white-space:nowrap}
 @media(min-width:768px){.case-stat .stat-num{font-size:calc(var(--u)*64)}}
 .case-stat .stat-num sup{font-size:.45em;color:var(--gold)}

@@ -57,7 +57,7 @@ document.getElementById('caseList').innerHTML = CASES.map(c => `
   </div>
   <div class="case-media">
     <div class="case-panel case-banner">
-      <video src="${c.video}" poster="${c.poster}" autoplay muted loop playsinline preload="metadata" aria-label="${c.name} film"></video>
+      <video src="${c.video}" poster="${c.poster}" autoplay muted loop playsinline preload="auto" aria-label="${c.name} film"></video>
     </div>
     <div class="case-side">
       <div class="case-panel case-stat">
@@ -91,7 +91,7 @@ document.querySelectorAll('.roll span').forEach(s => s.dataset.dup = s.textConte
   const el = document.getElementById('loader'), num = el.querySelector('.loader-count');
   let p = 0, done = false;
   const finish = () => { if (done) return; done = true; num.textContent = '100%'; el.classList.add('done'); document.body.classList.add('ready'); setTimeout(() => el.remove(), 1000); };
-  const iv = setInterval(() => { p = Math.min(100, p + Math.random() * 16); num.textContent = Math.floor(p) + '%'; if (p >= 100) { clearInterval(iv); setTimeout(finish, 250); } }, 110);
+  const iv = setInterval(() => { p = Math.min(100, p + 6 + Math.random() * 20); num.textContent = Math.floor(p) + '%'; if (p >= 100) { clearInterval(iv); setTimeout(finish, 250); } }, 110);
   el.addEventListener('click', () => { clearInterval(iv); finish(); });
   setTimeout(finish, 5000);
 })();
@@ -182,3 +182,7 @@ if (window.gsap && window.ScrollTrigger) {
     gsap.from(el, { y: 36, autoAlpha: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
   });
 }
+
+/* keep case films playing whenever they are on screen */
+const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } }), { threshold: .15 });
+document.querySelectorAll('.case-banner video').forEach(v => { v.muted = true; vio.observe(v); });
