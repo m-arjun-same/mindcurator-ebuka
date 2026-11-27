@@ -161,10 +161,55 @@ if (window.gsap && window.ScrollTrigger) {
       .from(cs.querySelector('.case-link'), { y: 18, autoAlpha: 0, duration: .6 }, '-=.5')
       .from(cs.querySelectorAll('.case-panel'), { clipPath: 'inset(0 0 100% 0)', duration: .9, ease: 'power3.inOut', stagger: .1 }, '-=.35');
   });
-  gsap.utils.toArray('.about-line,.promise-h,.stats li,.skills-h').forEach(el => {
+  gsap.utils.toArray('.about-line,.stats li').forEach(el => {
     gsap.from(el, { y: 36, autoAlpha: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
   });
 }
+
+/* ---------- motion upgrade (own code; mirror-animmasterlib scroll-5 / text-15 / hero-1) ---------- */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  /* scroll progress bar */
+  gsap.to('#progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+  /* hero-1: hero copy + photo scrub out as you leave the hero */
+  gsap.to('.hero-inner', { yPercent: -12, autoAlpha: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  /* word-wipe headings: words fade in left to right, scrubbed */
+  document.querySelectorAll('.promise-h,.skills-h,.gallery-h,.process-h').forEach(el => {
+    el.innerHTML = el.textContent.trim().split(/\s+/).map(w => `<span class="ww" style="display:inline-block">${w}</span>`).join(' ');
+    gsap.fromTo(el.querySelectorAll('.ww'), { opacity: .14 }, { opacity: 1, stagger: .08, ease: 'none', scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 45%', scrub: true } });
+  });
+  /* scroll-5: about photos drift at different speeds */
+  document.querySelectorAll('.about-line .chip').forEach((chip, i) => {
+    gsap.to(chip, { y: [-28, 22, -14][i % 3], ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  /* case films drift inside their frames */
+  document.querySelectorAll('.case-banner video').forEach(v => {
+    gsap.fromTo(v, { yPercent: -5, scale: 1.12 }, { yPercent: 5, scale: 1.12, ease: 'none', scrollTrigger: { trigger: v.closest('.case-study'), start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  /* gallery clip-reveal + process steps */
+  gsap.utils.toArray('.gal-item').forEach(el => {
+    gsap.from(el, { clipPath: 'inset(0 0 100% 0)', y: 40, autoAlpha: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+  });
+  gsap.from('.step', { y: 36, autoAlpha: 0, duration: .8, ease: 'power3.out', stagger: .12, scrollTrigger: { trigger: '.steps', start: 'top 85%' } });
+})();
+
+/* ---------- gallery lightbox ---------- */
+(() => {
+  const items = [...document.querySelectorAll('.gal-item')];
+  const box = document.getElementById('lightbox'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
+  if (!items.length || !box) return;
+  let cur = 0;
+  const open = i => { cur = (i + items.length) % items.length; img.src = items[cur].querySelector('img').src; img.alt = items[cur].querySelector('img').alt; cap.textContent = items[cur].querySelector('.gal-cap').textContent; box.classList.add('open'); box.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  const close = () => { box.classList.remove('open'); box.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  items.forEach((it, i) => it.addEventListener('click', () => open(i)));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); open(cur - 1); });
+  document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); open(cur + 1); });
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+  document.addEventListener('keydown', e => { if (!box.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') open(cur - 1); if (e.key === 'ArrowRight') open(cur + 1); });
+})();
 
 /* ---------- hero photo hover: 3D tilt + lift follows the cursor ---------- */
 (() => {
