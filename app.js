@@ -224,17 +224,19 @@ if (window.gsap && window.ScrollTrigger) {
 (() => {
   const hero = document.querySelector('.hero'), img = document.querySelector('.hero-img');
   if (!hero || !img || window.matchMedia('(hover: none)').matches) return;
-  if (!window.gsap) img.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
-  const apply = (rx, ry, s) => {
-    if (window.gsap) gsap.to(img, { rotationY: ry, rotationX: rx, scale: s, transformPerspective: 900, duration: .6, ease: 'power3.out' });
-    else img.style.transform = `perspective(900px) rotateY(${ry}deg) rotateX(${rx}deg) scale(${s})`;
+  if (!window.gsap) img.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1), filter .6s ease';
+  /* probe lesson: rotationY-only tilt is near-invisible on a flat cutout
+     (a few px of foreshortening) — lean in-plane + shift + lift so it reads */
+  const apply = o => {
+    if (window.gsap) gsap.to(img, { rotationY: o.ry, rotationX: o.rx, rotation: o.rot, x: o.x, y: o.y, scale: o.s, filter: o.f, transformPerspective: 900, duration: .5, ease: 'power3.out' });
+    else { img.style.transform = `perspective(900px) rotateY(${o.ry}deg) rotateX(${o.rx}deg) rotate(${o.rot}deg) translate(${o.x}px, ${o.y}px) scale(${o.s})`; img.style.filter = o.f; }
   };
   hero.addEventListener('mousemove', e => {
     const r = hero.getBoundingClientRect();
     const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
-    apply(-dy * 7, dx * 10, 1.03);
+    apply({ rx: -dy * 7, ry: dx * 10, rot: dx * 6, x: dx * 16, y: dy * 12, s: 1.05, f: 'brightness(1.07)' });
   });
-  hero.addEventListener('mouseleave', () => apply(0, 0, 1));
+  hero.addEventListener('mouseleave', () => apply({ rx: 0, ry: 0, rot: 0, x: 0, y: 0, s: 1, f: 'brightness(1)' }));
 })();
 
 /* keep case films playing whenever they are on screen */
