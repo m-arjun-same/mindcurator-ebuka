@@ -166,6 +166,18 @@ if (window.gsap && window.ScrollTrigger) {
   });
 }
 
+/* ---------- hero photo hover: 3D tilt + lift follows the cursor ---------- */
+(() => {
+  const hero = document.querySelector('.hero'), img = document.querySelector('.hero-img');
+  if (!hero || !img || !window.gsap || window.matchMedia('(hover: none)').matches) return;
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
+    gsap.to(img, { rotationY: dx * 8, rotationX: -dy * 5, scale: 1.03, transformPerspective: 900, duration: .6, ease: 'power3.out' });
+  });
+  hero.addEventListener('mouseleave', () => gsap.to(img, { rotationY: 0, rotationX: 0, scale: 1, duration: .9, ease: 'power3.out' }));
+})();
+
 /* keep case films playing whenever they are on screen */
 const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } }), { threshold: .15 });
 document.querySelectorAll('.case-banner video').forEach(v => { v.muted = true; vio.observe(v); });
