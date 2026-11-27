@@ -232,8 +232,12 @@ if (window.gsap && window.ScrollTrigger) {
     else { img.style.transform = `perspective(900px) rotateY(${o.ry}deg) rotateX(${o.rx}deg) rotate(${o.rot}deg) translate(${o.x}px, ${o.y}px) scale(${o.s})`; img.style.filter = o.f; }
   };
   hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
+    /* probe lesson: dx/dy over the full 1919px hero gave only ±0.4deg
+       across the photo — normalize on the PHOTO rect so the lean
+       actually follows the cursor, clamped so far-off pointers max out */
+    const r = img.getBoundingClientRect();
+    const dx = Math.max(-.5, Math.min(.5, (e.clientX - r.left) / r.width - .5));
+    const dy = Math.max(-.5, Math.min(.5, (e.clientY - r.top) / r.height - .5));
     apply({ rx: -dy * 7, ry: dx * 10, rot: dx * 6, x: dx * 16, y: dy * 12, s: 1.05, f: 'brightness(1.07)' });
   });
   hero.addEventListener('mouseleave', () => apply({ rx: 0, ry: 0, rot: 0, x: 0, y: 0, s: 1, f: 'brightness(1)' }));
