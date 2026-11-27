@@ -26,7 +26,9 @@ ul{list-style:none}
 .loader-skip{font-family:'Geist Mono',monospace;font-size:calc(var(--u)*12);color:#8a8a8a;text-transform:uppercase;letter-spacing:.08em}
 
 /* ---------- header ---------- */
-.site-head{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;justify-content:space-between;align-items:flex-start;padding:calc(var(--u)*22) var(--pad);color:#fff;mix-blend-mode:difference}
+.site-head{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;justify-content:space-between;align-items:flex-start;padding:calc(var(--u)*22) var(--pad);color:#fff;mix-blend-mode:difference;transition:background .3s ease,padding .3s ease}
+.site-head.scrolled{background:#fff;color:#000;mix-blend-mode:normal;padding-top:calc(var(--u)*12);padding-bottom:calc(var(--u)*12);border-bottom:1px solid var(--line)}
+.site-head.scrolled .btn-chat{border:1px solid #000}
 .brand{display:flex;align-items:center;gap:calc(var(--u)*10)}
 .brand-mark{width:calc(var(--u)*34);height:calc(var(--u)*34)}
 .brand-name{font-family:'DM Serif',serif;font-size:calc(var(--u)*24);letter-spacing:-.02em}

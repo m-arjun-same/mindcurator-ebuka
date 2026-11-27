@@ -211,21 +211,40 @@ if (window.gsap && window.ScrollTrigger) {
   document.addEventListener('keydown', e => { if (!box.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') open(cur - 1); if (e.key === 'ArrowRight') open(cur + 1); });
 })();
 
-/* ---------- hero photo hover: 3D tilt + lift follows the cursor ---------- */
+/* ---------- header: solid bar once you scroll (probe: blend header collided with content) ---------- */
+(() => {
+  const head = document.querySelector('.site-head');
+  if (!head) return;
+  const onScroll = () => head.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- hero photo hover: 3D tilt + lift follows the cursor (works with or without GSAP) ---------- */
 (() => {
   const hero = document.querySelector('.hero'), img = document.querySelector('.hero-img');
-  if (!hero || !img || !window.gsap || window.matchMedia('(hover: none)').matches) return;
+  if (!hero || !img || window.matchMedia('(hover: none)').matches) return;
+  if (!window.gsap) img.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
+  const apply = (rx, ry, s) => {
+    if (window.gsap) gsap.to(img, { rotationY: ry, rotationX: rx, scale: s, transformPerspective: 900, duration: .6, ease: 'power3.out' });
+    else img.style.transform = `perspective(900px) rotateY(${ry}deg) rotateX(${rx}deg) scale(${s})`;
+  };
   hero.addEventListener('mousemove', e => {
     const r = hero.getBoundingClientRect();
     const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
-    gsap.to(img, { rotationY: dx * 8, rotationX: -dy * 5, scale: 1.03, transformPerspective: 900, duration: .6, ease: 'power3.out' });
+    apply(-dy * 7, dx * 10, 1.03);
   });
-  hero.addEventListener('mouseleave', () => gsap.to(img, { rotationY: 0, rotationX: 0, scale: 1, duration: .9, ease: 'power3.out' }));
+  hero.addEventListener('mouseleave', () => apply(0, 0, 1));
 })();
 
 /* keep case films playing whenever they are on screen */
 const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } }), { threshold: .15 });
-document.querySelectorAll('.case-banner video').forEach(v => { v.muted = true; vio.observe(v); });
+document.querySelectorAll('.case-banner video').forEach(v => {
+  v.muted = true;
+  vio.observe(v);
+  v.addEventListener('loadeddata', () => { const r = v.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) v.play().catch(() => {}); });
+  v.addEventListener('click', () => { if (v.paused) v.play().catch(() => {}); else v.pause(); });
+});
 
 /* footer: copy-email pill + intro reveal */
 (() => {
