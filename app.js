@@ -1,49 +1,50 @@
-/* MindCurator × Ebuka layout — own code. Data first, then motion. */
+/* Ebuka Photography — own code. Data first, then motion. */
 const CASES = [
- { id:'cafe-breizh', flag:'BREIZH', name:'Café Breizh',
-   headline:'Giving a third-generation Las Vegas bakery a website as crafted as its pastry',
-   summary:'Two locations — Spring Mountain and Henderson. A real 3D croissant turns in the hero while menus, story and visits stay one glance away.',
-   link:'https://m-arjun-same.github.io/cafe-breizh/', video:'assets/cafe.mp4', poster:'assets/cafe-poster.jpg',
-   stat:{value:'2', label:'Locations in Las Vegas', image:'assets/cafe-stat.jpg'},
-   quote:{title:'A real 3D croissant, not a photo', text:'The hero is a true 3D model — it rocks, breathes and floats over flat crème and oven-black fields.', name:'Café Breizh', role:'Las Vegas · French Bakery', avatar:'assets/cafe-stat.jpg'} },
- { id:'citypaws', flag:'CITYPAWS', name:'CityPaws Grooming',
-   headline:'Helping a Houston dog salon fill its chairs with doodles, poodles and a drone’s-eye view',
-   summary:'A salon in River Oaks plus a mobile van, seven days a week. Full-screen film hero, a pinned groom journey, and Zellie the doodle as the reveal.',
-   link:'https://m-arjun-same.github.io/citypaws-grooming/', video:'assets/citypaws.mp4', poster:'assets/citypaws-stat.webp',
-   stat:{value:'4.5', sup:'★', label:'Google Rating', image:'assets/citypaws-stat.webp'},
-   quote:{title:'Salon and mobile, one booking flow', text:'Founded by Daniella “Danni” Betancourt in 2019 — the site carries her salon, her van and her own dogs. Nothing stock.', name:'CityPaws Grooming', role:'Houston · Est. 2019', avatar:'assets/hero-dog.webp'} },
- { id:'maguva', flag:'MAGUVA', name:'Maguva',
-   headline:'Giving a since-1999 saree house its very first website — one that unfolds like a drape',
-   summary:'Women’s ethnic wear in Kukatpally: silk and cotton sarees, kurtis and wedding wear. A zari gold thread draws itself through the page as you scroll.',
-   link:'https://m-arjun-same.github.io/maguva/', video:'assets/maguva.mp4', poster:'assets/maguva-poster.jpg',
-   stat:{value:'4.7', sup:'★', label:'Google Rating · 2,143 Reviews', image:'assets/maguva-stat.jpg'},
-   quote:{title:'The Drape — the site is the saree', text:'Sections fold like cloth, and the store’s own Google reviews do the talking. No invented prices, ever.', name:'Maguva', role:'Kukatpally, Hyderabad · Since 1999', avatar:'assets/maguva-stat.jpg'} },
- { id:'malgudi', flag:'MALGUDI', name:'Malgudi Coffee House',
-   headline:'Pouring a KPHB coffee house’s famous filter coffee into a website',
-   summary:'At Kukatpally Metro, open 7:30 AM to 10:30 PM. A brass tumbler and davara turn in 3D while the whole menu stays one glance away.',
-   link:'https://m-arjun-same.github.io/malgudi-coffee-house/', video:'assets/malgudi.mp4', poster:'assets/malgudi-stat.jpg',
-   stat:{value:'₹35', label:'The Famous Filter Coffee', image:'assets/malgudi-stat.jpg'},
-   quote:{title:'A tumbler you can turn', text:'The signature serve — brass tumbler, frothy davara — rebuilt in 3D and scrubbed by your scroll.', name:'Malgudi Coffee House', role:'Kukatpally, Hyderabad', avatar:'assets/malgudi-stat.jpg'} },
- { id:'mayuri', flag:'MAYURI', name:'Mayuri Footwears',
-   headline:'Helping a Kukatpally footwear store put its best foot forward online',
-   summary:'Three rooms — men, women and kids — under one roof. Big type, warm light, and the shoes doing all the talking.',
-   link:'https://m-arjun-same.github.io/mayuri-footwears/', video:'assets/mayuri.mp4', poster:'assets/mayuri-poster.jpg',
-   stat:{value:'3', label:'Rooms — Men · Women · Kids', image:'assets/mayuri-stat.jpg'},
-   quote:{title:'One store, three rooms', text:'Every collection gets its own room and its own light, so a whole family finds its pair in seconds.', name:'Mayuri Footwears', role:'Kukatpally, Hyderabad', avatar:'assets/mayuri-stat.jpg'} },
+ { id:'weddings', name:'Weddings',
+   headline:'Golden-hour vows, real tears, and the dance floor after dark',
+   summary:'From the first look to the last dance — the whole day, told honestly, with nothing staged that did not happen.',
+   link:'#contact', video:'assets/wedding.mp4', poster:'assets/wedding-poster.jpg',
+   stat:{value:'120', label:'Weddings Shot', image:'assets/wedding-poster.jpg'},
+   quote:{title:'The day, as it felt', text:'No stiff posing, no endless line-ups — just the vows, the laughter and the people you love, kept as they were.', name:'Weddings', role:'Ebuka Photography', avatar:'assets/wedding-poster.jpg'} },
+ { id:'portraits', name:'Portraits',
+   headline:'Portraits that look like you on your best, most relaxed day',
+   summary:'Studio or open sky, soft light and time to settle in — portraits for people who hate having their photo taken.',
+   link:'#contact', video:'assets/portrait.mp4', poster:'assets/portrait-poster.jpg',
+   stat:{value:'1', label:'Hour, unhurried', image:'assets/portrait-poster.jpg'},
+   quote:{title:'Relaxed beats perfect', text:'The best portraits happen after the nerves drop — so we shoot slow, talk lots, and keep the camera out of the way.', name:'Portraits', role:'Ebuka Photography', avatar:'assets/portrait-poster.jpg'} },
+ { id:'events', name:'Events',
+   headline:'The room, the noise, the confetti — events shot like you were there',
+   summary:'Birthdays, launches and nights that run late. Candid, fast and close — the energy first, the details second.',
+   link:'#contact', video:'assets/event.mp4', poster:'assets/event-poster.jpg',
+   stat:{value:'250+', label:'Shoots Delivered', image:'assets/event-poster.jpg'},
+   quote:{title:'In the middle of it', text:'We shoot from inside the crowd, not from the edge of the room — so the photos feel like the night did.', name:'Events', role:'Ebuka Photography', avatar:'assets/event-poster.jpg'} },
+ { id:'fashion', name:'Editorial & Fashion',
+   headline:'Bold colour, hard light, and a frame that lets the look breathe',
+   summary:'Editorial and fashion work for brands and models — clean sets, strong shapes, and images built to be seen big.',
+   link:'#contact', video:'assets/fashion.mp4', poster:'assets/fashion-poster.jpg',
+   stat:{value:'8', label:'Years Behind the Lens', image:'assets/fashion-poster.jpg'},
+   quote:{title:'The look leads', text:'Light, colour and line do the talking — the camera just stays out of their way.', name:'Editorial & Fashion', role:'Ebuka Photography', avatar:'assets/fashion-poster.jpg'} },
+ { id:'family', name:'Family',
+   headline:'Family photos where nobody is told to say cheese',
+   summary:'Sunny parks, living rooms, grandparents and chaos — family shoots that end with photos you actually want on the wall.',
+   link:'#contact', video:'assets/family.mp4', poster:'assets/family-poster.jpg',
+   stat:{value:'100%', label:'Real Moments, No Stock', image:'assets/family-poster.jpg'},
+   quote:{title:'Let them be themselves', text:'Kids run, parents laugh, someone always blinks — and somehow those are the frames everyone keeps.', name:'Family', role:'Ebuka Photography', avatar:'assets/family-poster.jpg'} },
 ];
 const SKILLS = [
- {ico:'✦', title:'Website Design', desc:'Full business websites that feel like experiences, not pages', img:'assets/cafe-poster.jpg'},
- {ico:'✧', title:'Online Stores', desc:'Catalogues, carts and WhatsApp checkout that actually sell', img:'assets/mayuri-poster.jpg'},
- {ico:'✦', title:'3D & Motion', desc:'Real 3D models, scroll journeys and film inside the page', img:'assets/malgudi-stat.jpg'},
- {ico:'✧', title:'Brand Identity', desc:'One visual world per business — never a repeated skin', img:'assets/maguva-poster.jpg'},
- {ico:'✦', title:'Care & Growth', desc:'Hosting, updates and the next version, handled by the studio', img:'assets/citypaws-stat.webp'},
+ {ico:'✦', title:'Weddings', desc:'Full-day coverage, from getting ready to the last dance', img:'assets/wedding-poster.jpg'},
+ {ico:'✧', title:'Portraits', desc:'Studio and outdoor portraits that actually look like you', img:'assets/portrait-poster.jpg'},
+ {ico:'✦', title:'Events', desc:'Candid coverage that keeps the energy of the night', img:'assets/event-poster.jpg'},
+ {ico:'✧', title:'Editorial', desc:'Fashion and brand work with bold light and colour', img:'assets/fashion-poster.jpg'},
+ {ico:'✦', title:'Family', desc:'Relaxed family shoots, at home or out in the sun', img:'assets/family-poster.jpg'},
 ];
-const flagSVG = t => `<svg class="case-flag" viewBox="0 0 110 56" fill="none" aria-hidden="true"><line x1="4" y1="2" x2="4" y2="54" stroke="#000" stroke-width="2"/><path d="M4 4 C 30 -2, 55 10, 104 4 L 96 16 L 104 28 C 55 34, 30 22, 4 28 Z" fill="#000"/><text x="52" y="21" fill="#fff" font-family="Geist, sans-serif" font-size="10.5" font-weight="500" text-anchor="middle" letter-spacing="1">${t}</text></svg>`;
+/* Camera flag: same black flag shape as before, camera icon in place of the text. */
+const flagSVG = () => `<svg class="case-flag" viewBox="0 0 110 56" fill="none" aria-hidden="true"><line x1="4" y1="2" x2="4" y2="54" stroke="#000" stroke-width="2"/><path d="M4 4 C 30 -2, 55 10, 104 4 L 96 16 L 104 28 C 55 34, 30 22, 4 28 Z" fill="#000"/><g fill="#fff"><rect x="32" y="9" width="40" height="19" rx="3"/><rect x="42" y="5.5" width="14" height="5" rx="1.5"/><circle cx="52" cy="18.5" r="7" fill="#000"/><circle cx="52" cy="18.5" r="4.5" fill="#fff"/><circle cx="52" cy="18.5" r="2" fill="#000"/><circle cx="66" cy="13" r="1.6"/></g></svg>`;
 
 document.getElementById('caseList').innerHTML = CASES.map(c => `
 <article class="case-study">
   <div class="case-header">
-    ${flagSVG(c.flag)}
+    ${flagSVG()}
     <div class="case-head-grid">
       <div>
         <h3 class="case-name">${c.name}</h3>
@@ -51,7 +52,7 @@ document.getElementById('caseList').innerHTML = CASES.map(c => `
       </div>
       <div>
         <p class="case-summary">${c.summary}</p>
-        <a class="case-link magnetic" href="${c.link}" target="_blank" rel="noreferrer"><span class="roll"><span>Learn More</span></span></a>
+        <a class="case-link magnetic" href="${c.link}"><span class="roll"><span>Book This Shoot</span></span></a>
       </div>
     </div>
   </div>
@@ -174,7 +175,7 @@ document.querySelectorAll('.case-banner video').forEach(v => { v.muted = true; v
 /* footer: copy-email pill + intro reveal */
 (() => {
   const btn = document.getElementById('feCopy'), txt = document.getElementById('feText');
-  const email = 'themindcuratorstudio@gmail.com';
+  const email = 'hello@ebukaphotography.com';
   btn && btn.addEventListener('click', async () => {
     try { await navigator.clipboard.writeText(email); txt.textContent = 'Copied!'; }
     catch { window.location.href = 'mailto:' + email; return; }
