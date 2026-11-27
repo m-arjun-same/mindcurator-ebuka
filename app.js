@@ -38,13 +38,11 @@ const SKILLS = [
  {ico:'✧', title:'Editorial', desc:'Fashion and brand work with bold light and colour', img:'assets/fashion-poster.jpg'},
  {ico:'✦', title:'Family', desc:'Relaxed family shoots, at home or out in the sun', img:'assets/family-poster.jpg'},
 ];
-/* Camera flag: same black flag shape as before, camera icon in place of the text. */
-const flagSVG = () => `<svg class="case-flag" viewBox="0 0 110 56" fill="none" aria-hidden="true"><line x1="4" y1="2" x2="4" y2="54" stroke="#000" stroke-width="2"/><path d="M4 4 C 30 -2, 55 10, 104 4 L 96 16 L 104 28 C 55 34, 30 22, 4 28 Z" fill="#000"/><g fill="#fff"><rect x="32" y="9" width="40" height="19" rx="3"/><rect x="42" y="5.5" width="14" height="5" rx="1.5"/><circle cx="52" cy="18.5" r="7" fill="#000"/><circle cx="52" cy="18.5" r="4.5" fill="#fff"/><circle cx="52" cy="18.5" r="2" fill="#000"/><circle cx="66" cy="13" r="1.6"/></g></svg>`;
 
 document.getElementById('caseList').innerHTML = CASES.map(c => `
 <article class="case-study">
   <div class="case-header">
-    ${flagSVG()}
+    <img class="case-camera" src="assets/camera.svg" alt="" loading="lazy">
     <div class="case-head-grid">
       <div>
         <h3 class="case-name">${c.name}</h3>
@@ -158,7 +156,7 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.hero-card', { y: 24, autoAlpha: 0, duration: .9, ease: 'power3.out', delay: 1.5 });
   document.querySelectorAll('.case-study').forEach(cs => {
     const tl = gsap.timeline({ scrollTrigger: { trigger: cs, start: 'top 78%' } });
-    tl.from(cs.querySelector('.case-flag'), { clipPath: 'inset(100% -50% 0% -50%)', duration: .8, ease: 'power3.out' })
+    tl.from(cs.querySelector('.case-camera'), { y: 20, autoAlpha: 0, duration: .7, ease: 'power3.out' })
       .from(cs.querySelectorAll('.case-name,.case-headline,.case-summary'), { y: 34, autoAlpha: 0, duration: .8, ease: 'power3.out', stagger: .08 }, '-=.4')
       .from(cs.querySelector('.case-link'), { y: 18, autoAlpha: 0, duration: .6 }, '-=.5')
       .from(cs.querySelectorAll('.case-panel'), { clipPath: 'inset(0 0 100% 0)', duration: .9, ease: 'power3.inOut', stagger: .1 }, '-=.35');

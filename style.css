@@ -111,7 +111,7 @@ a:hover .roll>span{transform:translateY(-1.2em)}
 .cases{background:#fff;padding:calc(var(--u)*56) var(--pad) calc(var(--u)*40)}
 .cases .sec-label{margin-bottom:calc(var(--u)*26)}
 .case-study{margin-bottom:calc(var(--u)*110)}
-.case-flag{width:calc(var(--u)*110);height:calc(var(--u)*56)}
+.case-camera{width:calc(var(--u)*64);height:auto}
 .case-head-grid{margin-top:calc(var(--u)*8)}
 @media(min-width:768px){.case-head-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0 calc(var(--u)*24)}}
 @media(min-width:1280px){.case-head-grid{grid-template-columns:794fr 470fr;gap:0 calc(var(--u)*16)}}
